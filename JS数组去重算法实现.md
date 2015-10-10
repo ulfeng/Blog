@@ -39,3 +39,29 @@ function unique1(array) {
 var arr = [1, 1, 2, 3, 4, 4, 3, 2];
 alert(unique1(arr));
 ```
+#### 2、对象键值对法
+    该方法执行的速度比其他任何方法都快， 就是占用的内存大一些；实现思路：新建一js对象以及新数组，遍历传入数组时，判断值是否为js对象的键，不是的话给对象新增该键并放入新数组。
+    注意点： 判断是否为js对象键时，会自动对传入的键执行“toString()”，不同的键可能会被误认为一样；例如： a[1]、a["1"] 。解决上述问题还是得调用“indexOf”。
+```javascript
+// 对象键值对法
+// 速度最快，占空间最多(空间换时间)
+function unique2(array) {
+    var i, n = {}, r = [], len = array.length, val, type;
+    for (i = 0; i < len; i++) {
+        val = array[i];
+        type = typeof val;
+        if (!n[val]) {
+            n[val] = [type];
+            r.push(val);
+        }
+        else if (n[val].indexOf(type) < 0) {
+            n[val].push(type);
+            r.push(val);
+        }
+    }
+    return r;
+}
+// for test
+var arr = [1, 1, 2, 3, 4, 4, 3, 2];
+alert(unique2(arr));
+```
