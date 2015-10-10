@@ -42,6 +42,7 @@ alert(unique1(arr));
 #### 2、对象键值对法
     该方法执行的速度比其他任何方法都快， 就是占用的内存大一些；实现思路：新建一js对象以及新数组，遍历传入数组时，判断值是否为js对象的键，不是的话给对象新增该键并放入新数组。
     注意点： 判断是否为js对象键时，会自动对传入的键执行“toString()”，不同的键可能会被误认为一样；例如： a[1]、a["1"] 。解决上述问题还是得调用“indexOf”。
+    
 ```javascript
 // 对象键值对法
 // 速度最快，占空间最多(空间换时间)
@@ -65,8 +66,9 @@ function unique2(array) {
 var arr = [1, 1, 2, 3, 4, 4, 3, 2];
 alert(unique2(arr));
 ```
-#### 数组下标判断法
+#### 3、数组下标判断法
     还是得调用“indexOf”性能跟方法1差不多，实现思路：如果当前数组的第i项在当前数组中第一次出现的位置不是i，那么表示第i项是重复的，忽略掉。否则存入结果数组。
+    
 ```javascript
 function unique3(array) {
     var n = [array[0]]; // 结果数组
@@ -81,4 +83,41 @@ function unique3(array) {
 // for test
 var arr = [1, 1, 2, 3, 4, 4, 3, 2];
 alert(unique3(arr));
+```
+
+#### 排序后相邻去除法
+		虽然原生数组的”sort”方法排序结果不怎么靠谱，但在不注重顺序的去重里该缺点毫无影响。实现思路：给传入数组排序，排序后相同值相邻，然后遍历时新数组只加入不与前一值重复的值。
+```javascript
+// 将相同的值相邻，然后遍历除去重复值
+function unique4(array) {
+    array.sort();
+    var re = [array[0]];
+    for (var i = 1; i < array.length; i++) {
+        if (array[i] !== re[re.length - 1]) {
+            re.push(array[i]);
+        }
+    }
+    return re;
+}
+// for test
+var arr = [1, 1, 2, 3, 4, 4, 3, 2];
+// alert(unique4(arr));
+```
+
+#### 5.优化遍历数组法
+		源自外国博文，该方法的实现代码相当酷炫；实现思路：获取没重复的最右一值放入新数组。（检测到有重复值时终止当前循环同时进入顶层循环的下一轮判断）
+```javascript
+// 获取没重复的最右一值放入新数组
+function unique5(array) {
+    var r = [];
+    for (var i = 0, len = array.length; i < len; i++) {
+        for (var j = i + 1; i < len; j++) {
+            if (array[i] === array[j]) j = ++i;
+            r.push(array[i]);
+        }
+    }
+}
+// for test
+var arr = [1, 1, 2, 3, 4, 4, 3, 2];
+alert(unique5(arr));
 ```
