@@ -54,11 +54,18 @@ String.prototype.replaceAll = function(s1, s2) {
 ```
 5、原生JavaScript转义html标签
 ```javascript
+function HtmlEncode(text){
+    return text.replace(/&/g,'&amp').replace(/\"/g,
+        '&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+```
+6、原生JavaScript还原html标签
+```javascript
 function HtmlDecode(text) {
     return text.replace(/&amp;/g, '&').replace(/&quot;/g, '\"').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 }
 ```
-6、原生JavaScript时间日期格式转换
+7、原生JavaScript时间日期格式转换
 ```javascript
 Date.prototype.Format = function(formatStr) {
     var str = formatStr;
@@ -92,10 +99,7 @@ Date.prototype.Format = function(formatStr) {
     return str;
 }
 ```
-7、
-```javascript
 
-```
 8、原生JavaScript判断是否为数字类型
 ```javascript
 function isDigit(value) {
