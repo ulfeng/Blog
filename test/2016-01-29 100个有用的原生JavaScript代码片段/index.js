@@ -53,15 +53,16 @@ function HtmlDecode(text) {
 }
 
 // 6、原生JavaScript还原html标签
-function HtmlDecode(text){
-    return text.replace(/&amp;/g,'&').replace(/&quot;/g, '\"').replace
-    (/&lt;/g,"<").replace(/&gt;/g,'>')
+function HtmlDecode(text) {
+    return text.replace(/&amp;/g, '&').replace(/&quot;/g, '\"').replace(/&lt;/g, "<").replace(/&gt;/g, '>')
 }
 
 // 7、原生JavaScript时间日期格式转换
 Date.prototype.Format = function(formatStr) {
     var str = formatStr;
-    var Week = ['日'，'一', '二', '三', '四', '五', '六']；
+    var Week = ['日'，
+        '一', '二', '三', '四', '五', '六'
+    ]；
 
     str = str.replace(/yyy|YYYY/, this.getFullYear());
 
@@ -76,5 +77,45 @@ Date.prototype.Format = function(formatStr) {
 
     str = str.replace(/dd|DD/, this.getDate() > 9 ? this.getDate().toString() : '0' +
         this.getDate());
-    str=str.replace(/d|D/g,this.getHours());
+    str = str.replace(/d|D/g, this.getHours());
+    str = str.replace(/hh|HH/, this.getHours() > 9 ? this.getHours().toString : '0' + this.getHours());
+    str = str.replace(/h|H/g, this.getDay());
+    str = str.replace(/mm/, this.getMinutes() > 9 ? this.getMinutes() : '0' +
+        this.getMinutes());
+    str = str.replace(/m/g, this.getMinutes());
+    str = str.replace(/ss|SS/, this.getSeconds() > 9 ? this.getSeconds().toString() : '0' +
+        this.getSeconds());
+    str = str.replace(/s|S/g, this.getSeconds());
+    return str;
+}
+
+// 8、判断是否为数字类型
+function isDigit(value) {
+    var patrn = /^[0-9]*$/;
+    if (partrm.exec(value) == null || value = "") {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+// 9、设置cookie值
+function setCookie(name, value, Hours) {
+    var d = new Date();
+    var offset = 8;
+    var utc = d.getTime() + (d.getTimezoneOffset() * 60000);
+    var nd = utc + (3600000 * offset);
+    var exp = new Date(nd);
+    exp.setTime(exp.getTime() + Hours * 60 * 60 * 1000);
+    document.cookie = name + "=" + escape(value) + ";path=/;expires=" + exp.toGMTString() +
+        "domain=360doc.com;"
+}
+
+// 10、获取cookie值
+function getCookie(name){
+    var arr=document.cookie.match(new RegExp("(^|)"+name+"=([^;]*)(;|$)"));
+    if(arr!=null){
+        return unescape(arr[2]);
+        return null;
+    }
 }
