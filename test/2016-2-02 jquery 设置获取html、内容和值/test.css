@@ -1,0 +1,38 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors ufree(2016-02-02)
+ * @date    2016-02-02 16:37:26
+ * @version $Id$
+ */
+*{
+    margin:0;
+    padding: 0;
+    text-align: center;
+}
+ .container{
+ 	width:1200px;
+ 	height: auto;
+ 	overflow: hidden;
+ 	margin:0 auto;
+ }
+ h1{
+ 	margin:50px 0 10px;
+ }
+ input{
+ 	display: inline-block;
+ 	width:100px;
+ 	height: 30px;
+ 	cursor: pointer;
+ }
+ input[type="text"]{
+ 	width:150px;
+ 	height: 40px;
+ 	border:1px solid #222;
+ }
+  input[type="password"]{
+ 	width:150px;
+ 	height: 40px;
+ 	border:1px solid #222;
+ }
+
