@@ -17,5 +17,10 @@ $(".list_img img").each(function() {
 
 ##### Jquery 在chrome下用上述方法获取不到，可用如下方法
 ```jquery
-
+$('img').load(function() {  // chrome compatibility
+    $(".list_img img").each(function() {
+        var realWidth = $(this).width() / 2;
+        $(this).css("margin-left", -realWidth + "px");
+    })
+});
 ```
