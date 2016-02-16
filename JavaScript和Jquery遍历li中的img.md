@@ -24,3 +24,4 @@ $('img').load(function() {  // chrome compatibility
     })
 });
 ```
+不过很遗憾，这种方法在IE中没有用，解决方法两个都写，呵呵，我是不是很聪明
