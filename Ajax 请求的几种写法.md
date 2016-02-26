@@ -32,6 +32,43 @@ function loadXMLDoc() {
 ```
 --
 
+##### JQuery Ajax
+
+简写：
+```javascript
+    $.getJSON("json/address.json", function(item) {
+        if (item.errcode == 0) {
+            var address_value = item.o2o.data;
+            $.each(address_value, function(n, value) {
+                var uls = "";
+                uls += "<ul><li class='fore1'>" + value.shopName + "</li> <li class='fore2'>" + value.shopAddress + "</li> <li>" + value.shopTel + "</li> </ul>";
+                $("#address_list").append(uls);
+            });
+        } else {
+            alert(item.errmsg);
+        }
+    });
+```
+上述写法等价于：
+```javascript
+$.ajax({
+    type: "post",
+    // type: "get",
+    url: "http:www.xxx.com",
+    data: {
+        "name" : "张三"，
+        "性别" : "李四"
+    },
+    dataType: "json",
+    success: function(data){
+        alert(data.xx);
+    },
+    err:function(){
+        alert("请求失败");
+    }
+})
+```
+
 
 
 
