@@ -29,5 +29,15 @@ function loadXMLDoc() {
     xmlhttp.open("POST", "Ajax_File.txt", , true)
     xmlhttp.send();
 }
-
 ```
+---
+
+
+
+
+
+
+
+
+
+
