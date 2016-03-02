@@ -121,7 +121,52 @@ new Bar().constructor === Number;
 (new Test()).foo === 1;
 
 // 如果 new 被遗漏了，则函数不会返回新创建的对象。
-function Foo(){
-	this.bla=1; // 获取设置全局对象
+function Foo() {
+    this.bla = 1; // 获取设置全局对象
 }
 Foo(); // undefined
+
+// 工厂模式
+// 为了不使用**new**关键词，构造函数必须显式的返回一个值。
+function Bar() {
+    var value = 1;
+    return {
+        method: function() {
+            return value;
+        }
+    }
+}
+Bar.prototype = {
+    foo: function() {}
+};
+new Bar();
+Bar();
+
+// new Bar() 和Bar()返回的值完全相同，一个新创建的拥有method属性的
+// 对象被返回，其实这里创建了一个**闭包**。
+// new Bar() 并不会改变返回对象的原型。
+// 在上面的例子中，使用或者不使用new关键字没有功能性的区别。如下：
+var bar1 = new Bar();
+typeof(bar1.method); // "function"
+typeof(bar.foo); // "undefined"
+
+var bar2 = Bar();
+typeof(bar2.method); // "function"
+typeof(bar2.foo); // "undefined"
+
+// 通过工厂模式创建新对象
+// 为了创建对象，我们可以创建一个工厂方法，并且在方法
+// 内构造一个新对象。
+function Foo() {
+    var obj = {};
+    obj.value = 'blub';
+
+    var private = 2;
+    obj.someMethod = function(value) {
+        this.value = value;
+    }
+    obj.getPrivate = function() {
+        return private;
+    }
+    return obj;
+}

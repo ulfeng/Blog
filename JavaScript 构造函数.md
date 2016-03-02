@@ -52,3 +52,63 @@ function Foo(){
 }
 Foo(); // undefined
 ```
+
+#### 工厂模式
+为了不使用**new**关键词，构造函数必须显式的返回一个值。
+```javascript
+function Bar() {
+    var value = 1;
+    return {
+        method: function() {
+            return value;
+        }
+    }
+}
+Bar.prototype = {
+    foo: function() {}
+};
+new Bar();
+Bar();
+```
+
+new Bar() 和Bar()返回的值完全相同，一个新创建的拥有method属性的<br>
+对象被返回，其实这里创建了一个**闭包**。new Bar() 并不会改变返回对象的原型。<br>
+在上面的例子中，使用或者不使用new关键字没有功能性的区别。如下：<br>
+```javascript
+var bar1 = new Bar(); 
+typeof(bar1.method); // "function"
+typeof(bar.foo); // "undefined"
+
+var bar2 = Bar();
+typeof(bar2.method); // "function"
+typeof(bar2.foo); // "undefined"
+```
+**通过工厂模式创建新对象**<br>
+为了创建对象，我们可以创建一个工厂方法，并且在方法内构造一个新对象。<br>
+```javascript
+function Foo() {
+    var obj = {};
+    obj.value = 'blub';
+
+    var private = 2;
+    obj.someMethod = function(value) {
+        this.value = value;
+    }
+    obj.getPrivate = function() {
+        return private;
+    }
+    return obj;
+}
+```
+虽然上面的方式比起 new 的调用方式不容易出错，并且可以充分利用私有变量带来的便利， <br>但是随之而来的是一些不好的地方。<br>
+
+1、会占用更多的内存，因为新创建的对象不能共享原型上的方法。<br>
+2、为了实现继承，工厂方法需要从另外一个对象拷贝所有属性，或者把一个对象作为新创建
+对象的原型。<br>
+3、放弃原型链仅仅是因为防止遗漏 new 带来的问题，这似乎和语言本身的思
+想相违背。<br>
+
+**总结**
+
+虽然遗漏 new 关键字可能会导致问题，但这并不是放弃使用原型链的借口。 <br>最终使用哪种方式取决于应用程序的需求，选择一种代码书写风格并坚持下去才是最重
+要的。
