@@ -1,2 +1,3 @@
-# Blog
-前端知识的一些知识点，学习总结
+## PC 移动常用设备屏幕分辨率
+####　PC
+![PC](images/devive_pc.png)
