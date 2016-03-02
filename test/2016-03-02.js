@@ -170,3 +170,39 @@ function Foo() {
     }
     return obj;
 }
+
+if (typeof(Storage) != 'undefined') {
+    // Some Code...
+} else {
+    // Sorry...
+}
+
+// localStorage 实例 计算用户点击次数
+function clickCounter() {
+    if (typeof(Storage) != 'undefined') {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount + 1);
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById('result').innerHTML = "You have clicked the button " + localStorage.clickcount + " 次！";
+
+    } else {
+        document.getElementById('result').innerHTML = "Sorry! Your browser don't support localStorage";
+    }
+}
+
+// sessionStorage 实例
+function clickCounter() {
+    if (typeof(Storage) != 'undefined') {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+        } else {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById('result').innerHTML = sessionStorage.clickcount;
+
+    } else {
+        document.getElementById('result').innerHTML = "Sorry...";
+    }
+}

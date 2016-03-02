@@ -1,0 +1,56 @@
+## localStorage sessionStorage 和 cookie 的区别
+
+##### 浏览器支持
+IE8+,Firefox,Opera,Chrome,和Safari
+
+##### localStorage和sessionStorage
+There are two objects for storing data on the client.
+* localStorage - 没有时间限制的数据存储
+* sessionStorage - 针对一个session(会话)的数据存储
+在使用web存储前，应检查浏览器是否支持localStorage和sessionStorage：
+```javascript
+if (typeof(Storage) != 'undefined') {
+    // Some Code...
+} else {
+    // Sorry...
+}
+```
+
+##### localStorage 对象
+```javascript
+// localStorage 实例 计算用户点击次数
+function clickCounter() {
+    if (typeof(Storage) != 'undefined') {
+        if (localStorage.clickcount) {
+            localStorage.clickcount = Number(localStorage.clickcount + 1);
+        } else {
+            localStorage.clickcount = 1;
+        }
+        document.getElementById('result').innerHTML = "You have clicked the button " + localStorage.clickcount + " 次！";
+
+    } else{
+        document.getElementById('result').innerHTML="Sorry! Your browser don't support localStorage";
+    }
+}
+
+```
+
+##### sessionStorage 对象
+sessionStorage方法针对一个session进行数据存储。当用户关闭浏览器窗口后，<br>
+数据会被删除。
+```javascript
+// sessionStorage 实例
+function clickCounter() {
+    if (typeof(Storage) != 'undefined') {
+        if (sessionStorage.clickcount) {
+            sessionStorage.clickcount = Number(sessionStorage.clickcount) + 1;
+        } else {
+            sessionStorage.clickcount = 1;
+        }
+        document.getElementById('result').innerHTML = sessionStorage.clickcount;
+
+    } else {
+        document.getElementById('result').innerHTML = "Sorry...";
+    }
+}
+```
