@@ -207,11 +207,3 @@
 //     }
 // }
 
-// 作用域和命名空间
-function test() { // 一个作用域
-    for (var m = 0; m < 10; m++) { // 不是一个作用域
-        // Do something...
-    }
-    alert(m);
-}
-test();
