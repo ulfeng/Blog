@@ -19,8 +19,7 @@ function add(a, b) {
 }
 // alert(add(1, 2));
 
-// 数组
-// 遍历
+// 数组 遍历
 var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 for (var i = 0, l = arr.length; i < l; i++) {
     console.log(arr[i]);
