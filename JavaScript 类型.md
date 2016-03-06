@@ -17,11 +17,7 @@ typeof只有一个实际的应用，用来检测一个对象是否已经定义�
 对象的类型。
 **JavaScript类型表格**
 | Value | Class | Type |
-| ------|:-----:| :---:|
-| a     | b     | c    |
-
-| ABCD | EFGH | IJKL |
 | -----|:----:| ----:|
-| a    | b    | c    |
-| d    | e    |  f   |
+| "foo"    | String    | string    |
+| new String("foo")    | String    |  object   |
 | g    | h    |   i  |
