@@ -14,8 +14,24 @@ JavaScript 是*弱类型*的弱类型的语言，这就意味着，等于操作�
 typeof操作符(和instanceof一起)或许是JavaScript中最大的设计缺陷，因为几乎不可能从它们那里得到<br>
 想要的结果。
 typeof只有一个实际的应用，用来检测一个对象是否已经定义或者是否已经赋值，而这个应用却不是用来检查<br>
-对象的类型。
+对象的类型。<br>
 **JavaScript类型表格**
-Value             Class         Type<br>
+```javascript
+Value                Class         Type
 ----------------------------------------
-"foo"             String        string
+"foo"                String        string  
+new String("foo")    String        object 
+1.2                  Number        number
+new Number(1.2)      Number        object
+true                 Boolean       boolean
+new Boolean(true)    Boolean       object
+new Date()           Date          object
+new Error()          Error         object
+[1,2,3]              Array         object
+new Array(1,2,3)     Array         object
+new Function("")     Function      function
+/abc/g               RegExp        object(function in Nitro/V8)
+new RegExp("meow")   RegExp        object(function in Nitro/V8)
+{}                   Object        object
+new Object()         Object        object
+```
