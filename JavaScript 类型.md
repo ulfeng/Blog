@@ -35,3 +35,9 @@ new RegExp("meow")   RegExp        object(function in Nitro/V8)
 {}                   Object        object
 new Object()         Object        object
 ```
+Class 一列表示对象的内部属性[[Class]]的值。<br>
+为了获取对象的[[Class]],我们需要使用定义在Object.prototype上的方法*toString*
+
+**对象的类定义**
+
+
