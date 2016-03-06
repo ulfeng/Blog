@@ -16,6 +16,12 @@ typeof操作符(和instanceof一起)或许是JavaScript中最大的设计缺陷�
 typeof只有一个实际的应用，用来检测一个对象是否已经定义或者是否已经赋值，而这个应用却不是用来检查<br>
 对象的类型。
 **JavaScript类型表格**
-| Value | Class | Type|
-| ----- | ----- | --- |
-| a     | b     | c   |
+| Value | Class | Type |
+| ------|:-----:| :---:|
+| a     | b     | c    |
+
+| ABCD | EFGH | IJKL |
+| -----|:----:| ----:|
+| a    | b    | c    |
+| d    | e    |  f   |
+| g    | h    |   i  |
