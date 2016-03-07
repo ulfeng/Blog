@@ -39,5 +39,8 @@ Class 一列表示对象的内部属性[[Class]]的值。<br>
 为了获取对象的[[Class]],我们需要使用定义在Object.prototype上的方法*toString*
 
 **对象的类定义**
+JavaScript标准文档只给出了一种获取[[Class]]值的方法，那就是使用Object.prototype.toString.
+```javascript
 
+```
 
