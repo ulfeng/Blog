@@ -10,3 +10,20 @@ function is(type, obj) {
 }
 is('String', 'test'); // true
 is('String', new String('test')); // true
+
+function Foo() {}
+
+function Bar() {}
+Bar.prototype = new Foo();
+new Bar() instanceof Bar; // true
+new Bar() instanceof Foo; // true
+
+// 如果仅仅设置 Bar.prototype函数Foo本身，而不是Foo构造函数的一个实例
+Bar.prototype = Foo;
+new Bar() instanceof Foo; // false
+
+new String('foo') instanceof String; // true
+new String('foo') instanceof Object; // true
+
+'foo' instanceof String; // false
+'foo' instanceof Object; // false
