@@ -82,7 +82,8 @@ function test() {
 test(); // 2
 foo; // 3
 
-// var foo=1;
+var foo = 1;
+
 function test() {
     var foo = 2;
     window.foo = 3;
@@ -91,7 +92,7 @@ function test() {
 test(); // 2
 foo; // 3
 
-// 
+
 var foo = 1;
 
 function test() {
@@ -102,3 +103,14 @@ function test() {
 
 test(); // 2
 foo; // 3
+
+var undefined = 123;
+(function(something, foo, undefined) {
+    // 局部作用域里的undefined变量重新获得了'undefined'值
+})('Hello World', 42);
+
+var undefined = 123;
+(function(something, foo) {
+    var undefined;
+    // ...
+})('Hello World', 42);
