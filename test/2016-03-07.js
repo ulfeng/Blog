@@ -53,9 +53,52 @@ Number('010.2') === 10.2;
 parseInt('010.2', 10) === 10;
 
 !!'foo'; // true
-!!'';    // false
-!!'0';   // true
-!!'1';   // true
-!!'-1';  // true
-!!{};    // true
-!!true;  // true
+!!''; // false
+!!'0'; // true
+!!'1'; // true
+!!'-1'; // true
+!!{}; // true
+!!true; // true
+
+
+var foo = 1;
+
+function test() {
+    var foo = 2;
+    eval('foo=3');
+    return foo;
+}
+test(); //3
+foo; // 1
+
+var foo = 1;
+
+function test() {
+    var foo = 2;
+    var bar = eval;
+    bar('foo=3');
+    return foo;
+}
+test(); // 2
+foo; // 3
+
+// var foo=1;
+function test() {
+    var foo = 2;
+    window.foo = 3;
+    return foo;
+}
+test(); // 2
+foo; // 3
+
+// 
+var foo = 1;
+
+function test() {
+    var foo = 2;
+    eval.call(window, 'foo=3');
+    return foo;
+}
+
+test(); // 2
+foo; // 3
