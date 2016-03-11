@@ -19,16 +19,29 @@
 // alert(0 && '');     // false false 0
 
 
-alert(false || true);   // true
-alert(false || false);  // false
-alert(true || true);    // true
-alert(true || false);   // true
+// alert(false || true);   // true
+// alert(false || false);  // false
+// alert(true || true);    // true
+// alert(true || false);   // true
 
-alert(0 || 1);       // false true    1
-alert(2 || 1);       // true true     2
-alert('a' || 1);     // true true     a
-alert('' || 1);      // false true    1
-alert('a' || 0);     // true false    a
-alert('a' || 'b');   // true true     a
-alert('' || 0);      // false false   0
-alert(0 || '');      // false false   ''
+// alert(0 || 1);       // false true    1
+// alert(2 || 1);       // true true     2
+// alert('a' || 1);     // true true     a
+// alert('' || 1);      // false true    1
+// alert('a' || 0);     // true false    a
+// alert('a' || 'b');   // true true     a
+// alert('' || 0);      // false false   0
+// alert(0 || '');      // false false   ''
+
+var obj = {
+    a: 1,
+    b: function() {
+        console.log(this.a)
+    }
+};
+
+var a = 2;
+var objb = obj.b;
+alert(obj.b());
+alert(objb());
+alert(obj.b.call(window));
