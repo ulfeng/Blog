@@ -68,6 +68,7 @@ foo();
 ```javascript
 var id = setTimeout(foo, 1000);
 clearTimeout(id);
+// clearInterval();
 
 ```
 
