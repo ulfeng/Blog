@@ -9,6 +9,7 @@
     * [JavaScript 面向对象编程（一）：封装](https://github.com/ulfeng/blog/blob/master/2016/03/object-oriented(1).md)
     * [JavaScript 逻辑运算符 "||" 和 "&&"](https://github.com/ulfeng/blog/blob/master/2016/03/JavaScript%20%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6.md)
     * [JavaScript 原型和原型链](https://github.com/ulfeng/blog/blob/master/2016/03/Prototype%20and%20Prototype%20chain.md)
+    * [JavaScript 事件模型 事件处理机制](https://github.com/ulfeng/blog/blob/master/2016/03/event.md)
 
 --
 
