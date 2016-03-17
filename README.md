@@ -12,12 +12,16 @@
     * [事件模型 事件处理机制](https://github.com/ulfeng/blog/blob/master/2016/03/event.md)
     * [常用JavaScript代码片段](https://github.com/ulfeng/blog/blob/master/2015/100%E4%B8%AA%E5%B8%B8%E7%94%A8%E7%9A%84%E5%8E%9F%E7%94%9FJavaScipt%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5-01.md)
     * [Ajax请求的几种写法](https://github.com/ulfeng/blog/blob/master/2015/Ajax%20%E8%AF%B7%E6%B1%82%E7%9A%84%E5%87%A0%E7%A7%8D%E5%86%99%E6%B3%95.md)
+    * [Json字符串和Json对象](https://github.com/ulfeng/blog/blob/master/2015/JSON%20%E5%AD%97%E7%AC%A6%E4%B8%B2%20%E5%92%8C%20JSON%20%E5%AF%B9%E8%B1%A1.md)
+    * [数组去重算法实现](https://github.com/ulfeng/blog/blob/master/2015/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0.md)
+    * [arguments 对象](https://github.com/ulfeng/blog/blob/master/2015/JavaScript%20arguments%20%E5%AF%B9%E8%B1%A1.md)
 
 --
 
 * HTML5
     * [HTML5页面<meta>标签等](https://github.com/ulfeng/blog/blob/master/2016/03/HTML5%20%3Cmeta%3E%E7%AD%89%E6%80%BB%E7%BB%93.md)
-    * 
+    * [eval](https://github.com/ulfeng/blog/blob/master/2015/JavaScript%20eval.md)
+    * [undefined 和 null](https://github.com/ulfeng/blog/blob/master/2015/JavaScript%20undefined%20和%20null.md)
 
 --
 
