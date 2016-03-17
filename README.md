@@ -23,8 +23,8 @@
     * [闭包和引用](https://github.com/ulfeng/blog/blob/master/2015/JavaScript%20%E9%97%AD%E5%8C%85%E5%92%8C%E5%BC%95%E7%94%A8.md)
     * [JavaScript 和 Jquery 遍历](https://github.com/ulfeng/blog/blob/master/2015/JavaScript%E5%92%8CJquery%E9%81%8D%E5%8E%86li%E4%B8%AD%E7%9A%84img.md)
     * [Ajax 跨域 jsonp](https://github.com/ulfeng/blog/blob/master/2015/ajax%20%E8%B5%84%E6%BA%90%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md)
-    * []()
-    * []()
+    * [get 和 post](https://github.com/ulfeng/blog/blob/master/2015/get%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB.md)
+    * [localStorage sessionStorage cookie 的区别](https://github.com/ulfeng/blog/blob/master/2015/localStorage%20sessionStorage%20cookie%20%E7%9A%84%E5%8C%BA%E5%88%AB)
     * []()
     * []()
     * []()
@@ -44,4 +44,4 @@
 
 * other
     * [设备常用分辨率](https://github.com/ulfeng/blog/blob/master/2015/PC%20%E7%A7%BB%E5%8A%A8%E5%B8%B8%E7%94%A8%E8%AE%BE%E5%A4%87%E5%B1%8F%E5%B9%95%E5%88%86%E8%BE%A8%E7%8E%87.md)
-    * 
+    * [前端性能优化](https://github.com/ulfeng/blog/blob/master/2015/%E5%89%8D%E7%AB%AF%E4%BC%98%E5%8C%96.md)
