@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<title>Examples</title>
-<meta name="description" content="">
-<meta name="keywords" content="">
-<link href="" rel="stylesheet">
-<script src="317.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Examples</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <link href="" rel="stylesheet">
+    <script src="317.js"></script>
 </head>
-<body>
+<!-- <body>
     <ul id="ul">
     	<li>aaaaaaaaaaaaaaa</li>
     	<li>bbbbbbbbbbbbb</li>
@@ -17,5 +18,16 @@
     	<li>dddddddddddddddd</li>
     </ul>
     <input type="button" id="btn" value="XXXX">
+</body> -->
+
+<body onclick="alert('current is body');">
+    <div id="div0" onclick="alert('current is '+this.id)">
+        <div id="div1" onclick="alert('current is '+this.id)">
+            <div id="div2" onclick="alert('current is '+this.id)">
+                <div id="event_source" onclick="alert('current is '+this.id)" style="height:200px;width:200px;background-color:red;"></div>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>

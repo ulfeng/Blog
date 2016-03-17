@@ -66,3 +66,99 @@ window.onload = function() {
     }
 
 }
+
+function someHandle() {
+    window.event.cancelBubble = true;
+}
+
+function someHandle() {
+    event.stopPropagation();
+}
+
+function someHandle(event) {
+    var ev = event || window.event;
+    if (ev.stopPropagation) {
+        ev.stopPropagation();
+    } else {
+        ev.cancelBubble = true;
+    }
+}
+
+function someHandle() {
+    window.event.returnValue = false;
+}
+
+function someHandle() {
+    event.preventDefault();
+}
+
+function someHandle() {
+    var ev = event || window.event;
+    if (ev.preventDefault) {
+        ev.preventDefault();
+    } else {
+        event.returnValue = false;
+    }
+}
+
+var EventUtil = {
+    addHandler: function(element, type, handler) {
+        if (event.addEventListener) {
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent) {
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+
+    removeHandler: function(element, type, handler) {
+        if (element.removeEventListener) {
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent) {
+            element.detachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = null;
+        }
+    },
+    getEvent: function(event) {
+        return event ? event : window.event;
+    },
+    getTarget: function(event) {
+        return event.target || event.srcElement;
+    },
+    preventDefault: function(event) {
+        if (event.preventDefault) {
+            event.preventDefault();
+        } else {
+            event.returnValue = false;
+        }
+    },
+    stopPropagation: function(event) {
+        if (event.stopPropagation) {
+            event.stopPropagation();
+        } else {
+            event.cancelBubble = true;
+        }
+    }
+};
+
+// 抛开IE
+function globalClickListener(event) {
+    if (canEventPass == false) {
+        // 取消事件进一步向子节点传递和冒泡传递
+        event.stopPropagation();
+        // 取消浏览器事件的默认行为
+        event.preventDefault();
+    }
+}
+
+var div2 = document.getElementById("div2");
+EventUtil.addHandler(div2,"click",function(event){
+    event=EventUtil.getEvet(event);
+    EventUtil.stopPropagation(event);
+},false);
+
+document.body.addEventListener('click'，function(event){
+    event.stopPropagation();
+},true);
