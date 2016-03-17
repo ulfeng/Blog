@@ -13,4 +13,4 @@
 --
 
 * HTML5
-    * [HTML5页面<meta>标签等](https://github.com/ulfeng/blog/blob/master/2016/03/HTML5%20%E9%A1%B5%E9%9D%A2%E6%8B%A8%E6%89%93%E7%94%B5%E8%AF%9D.md)
+    * [HTML5页面<meta>标签等](https://github.com/ulfeng/blog/blob/master/2016/03/HTML5%20%3Cmeta%3E%E7%AD%89%E6%80%BB%E7%BB%93.md)
