@@ -115,11 +115,13 @@ Bar.prototype.foo='Hello World';
 Bar.prototype.constructor=Bar;
 
 var test=new Bar();
-test 从Bar.prototype和Foo.prototype继承下来，可以访问Bar.foo和Foo.method。
-需要注意的是 new Bar()不会创造一个新的实例，而是重复使用它原型上的实例，
+```
+test 从Bar.prototype和Foo.prototype继承下来，可以访问Bar.foo和Foo.method。<br>
+需要注意的是 new Bar()不会创造一个新的实例，而是重复使用它原型上的实例，<br>
 
 
 **属性查找**
+```javascript
 function foo() {
     this.add = function(x, y) {
         return x + y;
@@ -137,16 +139,20 @@ Object.prototype.substract = function(x, y) {
 var f = new foo();
 alert(f.add(1,3));// 4 而不是 14
 alert(f.substract(2,1)); 1
-属性查找的时候先查找自身的属性，如果没有再查找原型，如果没有再往上查找
+```
+属性查找的时候先查找自身的属性，如果没有再查找原型，如果没有再往上查找。<br>
 
 
 注意：*任何类型的对象的原型都不能赋值*
+```javascript
 function f(){}
 f.prototype = 1; // 无效
+```
 
-hasOwnPerproty() 
-为了判断一个属性是对象自身而不是原型上的，我们需要使用hasOwnPerproty()函数
+**hasOwnPerproty()** 
+为了判断一个属性是对象自身而不是原型上的，我们需要使用hasOwnPerproty()函数<br>
 hasOwnPerproty() 是JavaScript 唯一一个处理属性而不查找原型链的方法
+```javascript
 Object.prototype.bar=1;
 var foo={
 	goo:undefined
@@ -157,9 +163,10 @@ alert('bar' in foo); // true
 
 alert(foo.hasOwnProperty('bar')); // false
 alert(foo.hasOwnProperty('goo')); // true
-
-JavaScript 不会保护 hasOwnProperty 被非法占用，因此如果一个对象碰巧存在这个属性，
+```
+JavaScript 不会保护 hasOwnProperty 被非法占用，因此如果一个对象碰巧存在这个属性，<br>
 就需要使用外部的 hasOwnProperty 函数来获取正确的结果。
+```javascript
 var foo={
 	hasOwnProperty:function(){
 		return false;
@@ -168,10 +175,11 @@ var foo={
 };
 alert(foo.hasOwnProperty('bar'));  // false
 alert({}.hasOwnProperty.call(foo,'bar'));  // true
-
-当检查对象上某个属性是否存在时，hasOwnProperty 是唯一可用的方法。
-同时在使用 for in loop 遍历对象时，推荐总是使用 hasOwnProperty 方法，
+```
+当检查对象上某个属性是否存在时，hasOwnProperty 是唯一可用的方法。<br>
+同时在使用 for in loop 遍历对象时，推荐总是使用 hasOwnProperty 方法，<br>
 这将会避免原型对象扩展带来的干扰，我们来看一下例子：
+```javascript
 Object.prototype.bar=1;
 var foo={moo:2};
 for(var i in foo){
