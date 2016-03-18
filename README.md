@@ -4,7 +4,7 @@
 目录
 
 * JavaScript
-    * [call 和 apply 的用法意义及区别]()  ---- 2016-03-18    
+    * [call 和 apply 的用法意义及区别]() 
     * [自动分号插入](https://github.com/ulfeng/Blog/blob/master/2016/03/JavaScript%20%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%B7%E6%8F%92%E5%85%A5.md)
     * [setTimeout 和 setInterval ](https://github.com/ulfeng/Blog/blob/master/2016/03/setTimeout and setInterval.md)
     * [面向对象编程（一）：封装](https://github.com/ulfeng/blog/blob/master/2016/03/object-oriented(1).md)
