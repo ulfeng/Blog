@@ -1,7 +1,7 @@
 ## 原型和原型链
 
 
-##### JavaScript 原型 [参考地址](http://www.cnblogs.com/TomXu/archive/2012/01/05/2305453.html)
+##### JavaScript 原型
 ```javascript
 answer:
 刚学习JavaScript的时候，一般都是用如下方式来写代码
