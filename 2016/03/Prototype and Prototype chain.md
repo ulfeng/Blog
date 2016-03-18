@@ -119,7 +119,7 @@ test 从Bar.prototype和Foo.prototype继承下来，可以访问Bar.foo和Foo.me
 需要注意的是 new Bar()不会创造一个新的实例，而是重复使用它原型上的实例，
 
 
-属性查找
+**属性查找**
 function foo() {
     this.add = function(x, y) {
         return x + y;
@@ -140,7 +140,7 @@ alert(f.substract(2,1)); 1
 属性查找的时候先查找自身的属性，如果没有再查找原型，如果没有再往上查找
 
 
-注意 任何类型的对象的原型都不能赋值
+注意：*任何类型的对象的原型都不能赋值*
 function f(){}
 f.prototype = 1; // 无效
 
