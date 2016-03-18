@@ -4,7 +4,7 @@
 目录
 
 * JavaScript
-    * [call 和 apply 的用法意义及区别]() 
+    * [call 和 apply 的用法意义及区别](https://github.com/ulfeng/blog/blob/master/2016/03/call%20and%20apply.md) 
     * [自动分号插入](https://github.com/ulfeng/Blog/blob/master/2016/03/JavaScript%20%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%B7%E6%8F%92%E5%85%A5.md)
     * [setTimeout 和 setInterval ](https://github.com/ulfeng/Blog/blob/master/2016/03/setTimeout and setInterval.md)
     * [面向对象编程（一）：封装](https://github.com/ulfeng/blog/blob/master/2016/03/object-oriented(1).md)
@@ -31,7 +31,7 @@
 
 * HTML5
     * [HTML5 新元素](https://github.com/ulfeng/HTML5/blob/master/README.md)
-    * [HTML5页面<meta>标签等](https://github.com/ulfeng/blog/blob/master/2016/03/HTML5%20%3Cmeta%3E%E7%AD%89%E6%80%BB%E7%BB%93.md)
+    * [HTML5页面<meta>标签等](https://github.com/ulfeng/blog/edit/master/2016/03/HTML5.md)
     
 --
 
