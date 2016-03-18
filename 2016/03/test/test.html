@@ -12,15 +12,14 @@
 </head>
 <!-- <body>
     <ul id="ul">
-    	<li>aaaaaaaaaaaaaaa</li>
-    	<li>bbbbbbbbbbbbb</li>
-    	<li>cccccccccccccccc</li>
-    	<li>dddddddddddddddd</li>
+        <li>aaaaaaaaaaaaaaa</li>
+        <li>bbbbbbbbbbbbb</li>
+        <li>cccccccccccccccc</li>
+        <li>dddddddddddddddd</li>
     </ul>
     <input type="button" id="btn" value="XXXX">
 </body> -->
-
-<body onclick="alert('current is body');">
+<!-- <body onclick="alert('current is body');">
     <div id="div0" onclick="alert('current is '+this.id)">
         <div id="div1" onclick="alert('current is '+this.id)">
             <div id="div2" onclick="alert('current is '+this.id)">
@@ -28,6 +27,38 @@
             </div>
         </div>
     </div>
+</body> -->
+
+<body>
+    <input id="demo" value="input value">
+    <script>
+    // function obj(){
+    //     this.value="对象";
+    // }
+
+    // var value="global 变量";
+    // function Fun1(){
+    //     alert(this.value);
+    // }
+    // window.Fun1();        // global 变量
+    // Fun1.call(window);    // global 变量
+    // Fun1.call(document.getElementById('demo'));  // input value
+    // Fun1.call(new obj()); // 对象
+
+    var func = new function() {
+        this.a = "func";
+    }
+
+    var myFunc = function(x) {
+        var a = "myfunc";
+        alert(this.a);
+        alert(x);
+        alert(y);
+        alert(z);
+    }
+
+    myFunc.call(func, "var");
+    </script>
 </body>
 
 </html>
