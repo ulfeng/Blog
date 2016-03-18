@@ -3,7 +3,6 @@
 
 ##### JavaScript 原型
 ```javascript
-answer:
 刚学习JavaScript的时候，一般都是用如下方式来写代码
 var decimalDigits = 2,
     tax = 5;
