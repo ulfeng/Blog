@@ -96,8 +96,7 @@ alert(caluc.add(1, 2)); // 8
 
 --
 
-##### JavaScript 原型链 [参考地址](http://bonsaiden.github.io/JavaScript-Garden/zh/)
-answer:
+##### JavaScript 原型链
 ```javascript
 // 引语
 function Foo() {
