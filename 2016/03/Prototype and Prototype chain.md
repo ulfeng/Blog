@@ -1,9 +1,9 @@
 ## 原型和原型链
 
-
 ##### JavaScript 原型
+**引语**<br>
+刚学习JavaScript的时候，一般都是用如下方式来写代码:
 ```javascript
-刚学习JavaScript的时候，一般都是用如下方式来写代码
 var decimalDigits = 2,
     tax = 5;
 
@@ -14,9 +14,11 @@ function add(x, y) {
 function subtract(x, y) {
     return x - y;
 }
-通过执行各个function来得到结果，学习了原型之后，我们可以使用如下方式来美化一下代码
+```
+通过执行各个function来得到结果，学习了原型之后，我们可以使用如下方式来美化一下代码。<br>
 
-原型使用方式1：
+**原型使用方式1：**
+```javascript
 var Calculator = function(decimalDigits, tax) {
     this.decimalDigits = decimalDigits;
     this.tax = tax;
@@ -32,11 +34,11 @@ Calculator.prototype = {
 };
 var caluc=new Calculator();
 alert(caluc.add(1,5));
-
-原型使用方式2：
-语法:
-Calculator.prototype = function() {}();
-优点:封装私有的function,通过return的形式暴露出简单的使用名称，以达到public/private的效果
+```
+**原型使用方式2：**<br>
+语法:Calculator.prototype = function() {}();<br>
+优点:封装私有的function,通过return的形式暴露出简单的使用名称，以达到public/private的效果。<br>
+```javascript
 var Calculator = function(decimalDigits, tax) {
     this.decimalDigits = decimalDigits;
     this.tax = tax;
@@ -54,13 +56,16 @@ Calculator.prototype = function() {
     }
 }();
 alert((new Calculator()).add(1,4));
-
-使用方式3 原型继承
+```
+**使用方式3 原型继承**
+```javascript
 var BaseCalculator=function(){
 	this.decimalDigits=2;
 };
+```
 
-使用原型给BaseCalculator扩展两个对象方法
+// 使用原型给BaseCalculator扩展两个对象方法
+```javascript
 BaseCalculator.prototype.add=function(x,y){
 	return x+y;
 }
@@ -77,28 +82,29 @@ Calculator.prototype=new BaseCalculator();
 var caluc=new Calculator();
 alert(caluc.add(1,2));  // 3
 alert(caluc.decimalDigits)  // 2
-
-上面Calculator的原型是指向BaseCalculator的实例上的，所以可以访问他的decimalDigits属性值，
+```
+上面Calculator的原型是指向BaseCalculator的实例上的，所以可以访问他的decimalDigits属性值，<br>
 若不想让Calculator访问BaseCalculator的构造函数里申明的属性值，如下:
+```javascript
 Calculator.prototype = BaseCalculator.prototype;
 var caluc=new Calculator();
 alert(caluc.decimalDigits)  // undefined
+```
 
-覆盖重写前面的add功能
-需要写 Calculator.prototype = BaseCalculator.prototype; 的后面
+覆盖重写前面的add功能,需要写 Calculator.prototype = BaseCalculator.prototype; 的后面
+```javascript
 Calculator.prototype.add=function(x,y){
 	return x+y+this.tax;
 }
 var caluc = new Calculator();
 alert(caluc.add(1, 2)); // 8
-
 ```
 
 --
 
 ##### JavaScript 原型链
+**引语**
 ```javascript
-// 引语
 function Foo() {
     this.value = 42;
 }
@@ -149,7 +155,7 @@ function f(){}
 f.prototype = 1; // 无效
 ```
 
-**hasOwnPerproty()** 
+**hasOwnPerproty()** <br>
 为了判断一个属性是对象自身而不是原型上的，我们需要使用hasOwnPerproty()函数<br>
 hasOwnPerproty() 是JavaScript 唯一一个处理属性而不查找原型链的方法
 ```javascript
