@@ -31,7 +31,7 @@
 
 * HTML5
     * [HTML5 新元素](https://github.com/ulfeng/HTML5/blob/master/README.md)
-    * [HTML5页面<meta>标签等](https://github.com/ulfeng/blog/edit/master/2016/03/HTML5.md)
+    * [HTML5页面<meta>标签等](https://github.com/ulfeng/blog/blob/master/2016/03/HTML5.md)
     
 --
 
