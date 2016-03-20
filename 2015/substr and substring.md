@@ -1,6 +1,6 @@
 ## substr and substring
 
-####　substr
+#### substr
 ```javascript
 stringObject.substr(start,length);
 // start 必须，开始位置
