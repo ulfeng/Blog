@@ -5,18 +5,6 @@
 
 * JavaScript
 
-#### 2016 
-
--- 
-
-    * [substr() 和 substring()]
-
-
-
-#### 2015 
-
---
-
     * [this 的工作原理](https://github.com/ulfeng/blog/blob/master/2015/this.md) * 
     * [call 和 apply 的用法意义及区别](https://github.com/ulfeng/blog/blob/master/2016/03/call%20and%20apply.md) 
     * [自动分号插入](https://github.com/ulfeng/Blog/blob/master/2016/03/JavaScript%20%E8%87%AA%E5%8A%A8%E5%88%86%E5%8F%B7%E6%8F%92%E5%85%A5.md)
@@ -40,6 +28,7 @@
     * [Ajax 跨域 jsonp](https://github.com/ulfeng/blog/blob/master/2015/ajax%20%E8%B5%84%E6%BA%90%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95.md)
     * [get 和 post](https://github.com/ulfeng/blog/blob/master/2015/get%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB.md)
     * [localStorage sessionStorage cookie 的区别](https://github.com/ulfeng/blog/blob/master/2015/localStorage%20sessionStorage%20cookie%20%E7%9A%84%E5%8C%BA%E5%88%AB)
+    * [substr() 和 substring()]()
 
 --
 
