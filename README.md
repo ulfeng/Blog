@@ -29,6 +29,7 @@
     * [get 和 post](https://github.com/ulfeng/blog/blob/master/2015/get%E5%92%8Cpost%E7%9A%84%E5%8C%BA%E5%88%AB.md)
     * [localStorage sessionStorage cookie 的区别](https://github.com/ulfeng/blog/blob/master/2015/localStorage%20sessionStorage%20cookie%20%E7%9A%84%E5%8C%BA%E5%88%AB)
     * [substr() 和 substring()](https://github.com/ulfeng/blog/blob/master/2015/substr%20and%20substring.md)
+    * [常用正则表达式](https://github.com/ulfeng/blog/blob/master/2015/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F.md)
 
 --
 
