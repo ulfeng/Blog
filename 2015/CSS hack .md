@@ -18,3 +18,8 @@ background-size: 100px auto;
 // 修改方法
 background-size: 100px 100px;
 ```
+
+4、ios 清除对input样式的影响
+```css
+input[type=button],input[type=text],input[type=password]{-webkit-appearance:none;outline:none}
+```
