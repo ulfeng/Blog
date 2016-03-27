@@ -23,3 +23,9 @@ background-size: 100px 100px;
 ```css
 input[type=button],input[type=text],input[type=password]{-webkit-appearance:none;outline:none}
 ```
+
+5、手机浏览器上，按钮、图片、文本框点击进去的时候有阴影
+```css
+a,img,button,input,textarea{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+
+```
