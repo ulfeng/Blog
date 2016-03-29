@@ -50,5 +50,23 @@ input[type=button],input[type=text],input[type=password]{-webkit-appearance:none
 5、手机浏览器上，按钮、图片、文本框点击进去的时候有阴影
 ```css
 a,img,button,input,textarea{-webkit-tap-highlight-color:rgba(255,255,255,0);}
+```
 
+6、placeholder 颜色
+```
+#reg_form .in input::-webkit-input-placeholder { /* WebKit browsers */
+    color: #fff;
+}
+
+#reg_form .in input:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #fff;
+}
+
+#reg_form .in input::-moz-placeholder { /* Mozilla Firefox 4 to 19+ */
+    color: #fff;
+}
+
+#reg_form .in input:-ms-input-placeholder { /* Internet Explorer 10+ */
+    color: #fff;
+}
 ```
