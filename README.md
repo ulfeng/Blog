@@ -51,6 +51,7 @@
     * [SQL Server 2008 R2]()
     * [Sublime Text 3]()
     * [WebStorm]()
+    * [Windows 7](https://github.com/ulfeng/Resources/blob/master/windows.md)
 
 * other
     * [设备常用分辨率](https://github.com/ulfeng/blog/blob/master/2015/PC%20%E7%A7%BB%E5%8A%A8%E5%B8%B8%E7%94%A8%E8%AE%BE%E5%A4%87%E5%B1%8F%E5%B9%95%E5%88%86%E8%BE%A8%E7%8E%87.md)
