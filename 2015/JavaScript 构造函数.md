@@ -52,7 +52,6 @@ function Foo(){
 }
 Foo(); // undefined
 ```
-
 #### 工厂模式
 为了不使用**new**关键词，构造函数必须显式的返回一个值。
 ```javascript
@@ -70,7 +69,6 @@ Bar.prototype = {
 new Bar();
 Bar();
 ```
-
 new Bar() 和Bar()返回的值完全相同，一个新创建的拥有method属性的<br>
 对象被返回，其实这里创建了一个**闭包**。new Bar() 并不会改变返回对象的原型。<br>
 在上面的例子中，使用或者不使用new关键字没有功能性的区别。如下：<br>
