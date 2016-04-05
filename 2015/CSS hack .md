@@ -53,7 +53,7 @@ a,img,button,input,textarea{-webkit-tap-highlight-color:rgba(255,255,255,0);}
 ```
 
 6、placeholder 颜色
-```
+```css
 #reg_form .in input::-webkit-input-placeholder { /* WebKit browsers */
     color: #fff;
 }
