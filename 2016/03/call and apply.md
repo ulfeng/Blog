@@ -22,7 +22,7 @@ call 方法可以用来代替另一个对象调用一个方法。说明白一点
 call 和 apply的第一个参数都是要传入当前对象的对象，以及函数内部的this。<br>
 后面的参数都是传递给当前对象的参数。
 ```javascript
-var func = new function() {
+    var func = new function() {
         this.a = "func";
     }
 
@@ -38,4 +38,4 @@ var func = new function() {
 ##### 不同点
 对于第一个参数意义都一样，但对于第二个参数:<br>
 apply传入的是一个参数数组:func.apply(func,[var1,var2,var3])<br>
-call的写法:func.call(func1,var1,var,2,var3);
+call的写法:func.call(func,var1,var2,var3);
