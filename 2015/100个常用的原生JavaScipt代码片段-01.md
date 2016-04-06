@@ -134,3 +134,47 @@ function getCookie(name) {
     return null;
 }
 ```
+
+11、对象克隆
+```javascript
+/**
+ * 对象克隆
+ * 支持基本数据类型及对象
+ * 递归方法
+ */
+function funClone(obj) {
+    var o;
+    switch (typeof obj) {
+        case "undefined":
+            break;
+        case "string":
+            o = obj + "";
+            break;
+        case "boolean":
+            o = obj;
+            break;
+        case "object":
+            if (obj === null) {
+                o = null;
+            } else {
+                if (Object.prototype.toString.call(obj).slice(8, -1) === "Array") {
+                    o = [];
+                    for (var i = 0; i < obj.length; i++) {
+                        o.push(funClone(obj[i]));
+                    }
+                }
+                else {
+                    o = {};
+                    for (var k in obj) {
+                        o[k] = funClone(obj[k]);
+                    }
+                }
+            }
+            break;
+        default:
+            o = obj;
+            break;
+    }
+    return o;
+}
+```
