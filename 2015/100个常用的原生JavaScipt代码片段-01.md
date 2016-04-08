@@ -233,8 +233,29 @@ function clone(Obj) {
 12、数组去重
 ```javascript
 /**
+ * 最简单的方法
  * 数组去重
+ * 注意点：判断值是否在数组的方法“indexOf”是ECMAScript5 方法，IE8以下不支持，需多写一些兼容低版本浏览器代码，源码如下：
  */
+ // 判断浏览器是否支持indexOf ，indexOf 为ecmaScript5新方法 IE8以下（包括IE8， IE8只支持部分ecma5）不支持
+if (!Array.prototype.indexOf) {
+    // 新增indexOf方法
+    Array.prototype.indexOf = function (item) {
+        var result = -1, a_item = null;
+        if (this.length == 0) {
+            return result;
+        }
+        for (var i = 0, len = this.length; i < len; i++) {
+            a_item = this[i];
+            if (a_item === item) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+}
+
 function arraySingle(arr){
     var resArr=[];
     for(var i=0;i<arr.length;i++){
@@ -245,6 +266,9 @@ function arraySingle(arr){
     return resArr;
 }
 ```
+[其它方法](https://github.com/ulfeng/blog/blob/master/2015/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0.md)
+
+--
 
 13、数组快速排序
 ```javascript
