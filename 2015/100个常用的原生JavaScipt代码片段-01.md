@@ -39,12 +39,25 @@ function getHost(url) {
     return host;
 }
 ```
-3、原生JavaScript清楚空格
+3、原生JavaScript清除空格
 ```javascript
+// 清除字符串左右空格
 String.prototype.trim = function() {
     var reEtraSpace = /^\s*(.*?)\s+$/;
     return this.replace(reEtraSpace, "$1");
 }
+
+// 另一种写法
+if (!String.prototype.trim) {
+    String.prototype.trim = function() {
+        return this.replace(/^\s+/, "").replace(/\s+$/,"");
+    }
+}
+
+// test 
+var str = "   x s t  ";
+alert(str.trim() == "x s t");  // true
+
 ```
 4、原生 JavaScript 替换全部
 ```javascript
@@ -135,9 +148,10 @@ function getCookie(name) {
 }
 ```
 
-11、对象克隆
+11、实现一个函数clone，可以对JavaScript中的5种主要的数据类型（包括Number、String、Object、Array、Boolean）进行值复制
 ```javascript
 /**
+ * 方法一：
  * 对象克隆
  * 支持基本数据类型及对象
  * 递归方法
@@ -177,13 +191,71 @@ function funClone(obj) {
     }
     return o;
 }
+
+// 方法二:
+Object.prototype.clone = function(){
+    var o = this.constructor === Array ? [] : {};
+    for(var e in this){
+        o[e] = typeof this[e] === "object" ? this[e].clone() : this[e];
+    }
+    return o;
+}
+
+// 方法三:
+/**
+ * 克隆一个对象
+ * @param Obj
+ * @returns
+ */
+function clone(Obj) {
+    var buf;
+    if (Obj instanceof Array) {
+        buf = []; //创建一个空的数组
+        var i = Obj.length;
+        while (i--) {
+            buf[i] = clone(Obj[i]);
+        }
+        return buf;
+    }else if (Obj instanceof Object){
+        buf = {}; //创建一个空对象
+        for (var k in Obj) { //为这个对象添加新的属性
+            buf[k] = clone(Obj[k]);
+        }
+        return buf;
+    }else{ //普通变量直接赋值
+        return Obj;
+    }
+}
+
+
 ```
 
 12、数组去重
 ```javascript
 /**
+ * 最简单的方法
  * 数组去重
+ * 注意点：判断值是否在数组的方法“indexOf”是ECMAScript5 方法，IE8以下不支持，需多写一些兼容低版本浏览器代码，源码如下：
  */
+ // 判断浏览器是否支持indexOf ，indexOf 为ecmaScript5新方法 IE8以下（包括IE8， IE8只支持部分ecma5）不支持
+if (!Array.prototype.indexOf) {
+    // 新增indexOf方法
+    Array.prototype.indexOf = function (item) {
+        var result = -1, a_item = null;
+        if (this.length == 0) {
+            return result;
+        }
+        for (var i = 0, len = this.length; i < len; i++) {
+            a_item = this[i];
+            if (a_item === item) {
+                result = i;
+                break;
+            }
+        }
+        return result;
+    }
+}
+
 function arraySingle(arr){
     var resArr=[];
     for(var i=0;i<arr.length;i++){
@@ -194,6 +266,9 @@ function arraySingle(arr){
     return resArr;
 }
 ```
+[其它方法](https://github.com/ulfeng/blog/blob/master/2015/JS%E6%95%B0%E7%BB%84%E5%8E%BB%E9%87%8D%E7%AE%97%E6%B3%95%E5%AE%9E%E7%8E%B0.md)
+
+--
 
 13、数组快速排序
 ```javascript
