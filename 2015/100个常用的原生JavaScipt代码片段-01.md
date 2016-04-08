@@ -39,12 +39,25 @@ function getHost(url) {
     return host;
 }
 ```
-3、原生JavaScript清楚空格
+3、原生JavaScript清除空格
 ```javascript
+// 清除字符串左右空格
 String.prototype.trim = function() {
     var reEtraSpace = /^\s*(.*?)\s+$/;
     return this.replace(reEtraSpace, "$1");
 }
+
+// 另一种写法
+if (!String.prototype.trim) {
+    String.prototype.trim = function() {
+        return this.replace(/^\s+/, "").replace(/\s+$/,"");
+    }
+}
+
+// test 
+var str = "   x s t  ";
+alert(str.trim() == "x s t");  // true
+
 ```
 4、原生 JavaScript 替换全部
 ```javascript
