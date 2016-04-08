@@ -149,28 +149,63 @@ function funClone(obj) {
     return o;
 }
 
-var arr1=[1,2,3,3,4,3,2,2,4,5,6],
-    arr2=[];
-for(var i= 0,len=arr1.length;i<len;i++){
-    if(arr2.indexOf(arr1[i])<0){
+var arr1 = [1, 2, 3, 3, 4, 3, 2, 2, 4, 5, 6],
+    arr2 = [];
+for (var i = 0, len = arr1.length; i < len; i++) {
+    if (arr2.indexOf(arr1[i]) < 0) {
         arr2.push(arr1[i]);
     }
 }
-alert(arr2);
+// alert(arr2);
 
 
 /**
  * 数组去重
  */
-function arraySingle(arr){
-    var resArr=[];
-    for(var i=0;i<arr.length;i++){
-        if(resArr.indexOf(arr[i])<0){
+function arraySingle(arr) {
+    var resArr = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (resArr.indexOf(arr[i]) < 0) {
             resArr.push(arr[i]);
         }
     }
     return resArr;
 }
+
+function log() {
+    var args = Array.prototype.slice.call(arguments);
+    // 为了使用unshift数组方法，将arguments转化为真正的数组
+    args.unshift('(app)');
+    console.log.apply(console, args);
+}
+
+// 数组快速排序
+var quickSort = function (arr) {
+    if (arr.length <= 1) {
+        return arr;
+    }
+    var pivotIndex = Math.floor(arr.length / 2);
+    var pivot = arr.splice(pivotIndex, 1)[0]; // 返回被删除的数组
+    var left = [];
+    var right = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] < pivot) {
+            left.push(arr[i]);
+        } else {
+            right.push(arr[i]);
+        }
+    }
+    return quickSort(left).concat([pivot],quickSort(right));
+}
+var arrSort=[1,5,6,3,4,2,11,90,77];
+// alert(quickSort(arrSort));
+
+function trim(str){
+    if(str && typeof str==="string"){
+        return str.replace(/(^s*)|(s*)$/g,"");  // 去除前后空白符
+    }
+}
+
 
 
 
