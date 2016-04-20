@@ -85,3 +85,15 @@ a,img,button,input,textarea{-webkit-tap-highlight-color:rgba(255,255,255,0);}
     // etc.
 }
 ```
+
+8、css 背景透明 文字不透明
+```css
+.demo{
+  padding: 25px;
+  background-color:#000000;/* IE6和部分IE7内核的浏览器(如QQ浏览器)下颜色被覆盖 */
+  background-color:rgba(0,0,0,0.2); /* IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂，但解析为透明 */
+}
+.demo p{
+    color: #FFFFFF;
+}
+```
