@@ -30,7 +30,7 @@
 	background: url(bg.jpg) no-repeat;
 }
 ```
-**视频背景技术在IE8上的问题**
+**视频背景技术在IE8上的问题**<br>
 IE8不仅不能识别<video>标记，它对所有的HTML5标记都不能识别，这是一个问题，对于IE8,我们至少要让替代的背景<br>
 图片能显示出来。为了能达到这个目的，我们需要两件事情：一行JavaScript 代码，一个CSS条件判断注释语句。
 ```javascript
