@@ -97,3 +97,13 @@ a,img,button,input,textarea{-webkit-tap-highlight-color:rgba(255,255,255,0);}
     color: #FFFFFF;
 }
 ```
+
+9、div 中有一个 img, div 的高度比img高度高，3像素 bug
+```
+img {
+    display:block;
+    <!-- 或者 -->
+    vertical-align: middle;
+    
+}
+```
