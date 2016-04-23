@@ -45,6 +45,7 @@
     * [css hack](https://github.com/ulfeng/blog/blob/master/2015/CSS%20hack%20.md)
     * [css 布局](https://github.com/ulfeng/CSS3/blob/master/css%20%E6%B5%AE%E5%8A%A8%E5%B8%83%E5%B1%80.md)
     * [css3 新元素](https://github.com/ulfeng/CSS3/blob/master/new%20css3.md)
+    * [样式化checkbox/radio/select/input[type=file]等](https://github.com/ulfeng/CSS3/blob/master/css%20radio%20.md)
     
 --
 
