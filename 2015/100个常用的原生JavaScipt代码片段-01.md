@@ -290,3 +290,33 @@ var quickSort = function (arr) {
     return quickSort(left).concat([pivot],quickSort(right));
 }
 ```
+--
+
+14、截取url参数信息
+```javascript
+// 方法1
+// 中文字符串会出现乱码
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
+}
+
+// 方法2
+// 截取中文字符
+function getRequest() {
+    var url = window.location.search; //获取url中"?"符后的字串
+    var theRequest = new Object();
+    if (url.indexOf("?") != -1) {
+        var str = url.substr(1);
+        strs = str.split("&");
+        for(var i = 0; i < strs.length; i ++) {
+            theRequest[strs[i].split("=")[0]]=decodeURI(strs[i].split("=")[1]);
+        }
+    }
+    return theRequest;
+}
+
+
+```
