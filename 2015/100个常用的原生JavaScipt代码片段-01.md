@@ -318,5 +318,19 @@ function getRequest() {
     return theRequest;
 }
 
+// 方法3
+// 提取url参数信息
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r!=null){
+        return decodeURI(r[2]);
+    }else{
+        return null;
+    }
+}
+
 
 ```
+
+
