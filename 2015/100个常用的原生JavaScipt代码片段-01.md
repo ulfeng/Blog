@@ -333,4 +333,30 @@ function getQueryString(name) {
 
 ```
 
+-- 
+15、获得数字的N数倍
+```javascript
+// 获得5N倍
+function getMaxLength(num) {
+    var maxArray = [];
+    var tmpMax = 0;
+    
+    // N 数倍
+    for (var i = 0; i < num; i++) {
+        if (i % 5 == 0) {
+            maxArray.push(i);
+        }
+    }
+    
+    // 数组最大值
+    for (var i = 0; i < maxArray.length; i++) {
+        if (tmpMax < maxArray[i]) {
+            tmpMax = maxArray[i];
+        }
+    }
+    return tmpMax + 1;
+}
+
+```
+
 
