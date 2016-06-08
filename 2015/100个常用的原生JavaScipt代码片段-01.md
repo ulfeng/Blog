@@ -359,4 +359,53 @@ function getMaxLength(num) {
 
 ```
 
+16、html5图片上传预览
+```html
+<form enctype="multipart/form-data" action="" method="post">
+    <input type="file" name="imageUpload"/>
+    <div id="preview" style="width: 300px;height:300px;border:1px solid gray;"></div>
+</form>
+```
+
+```css
+#preview {
+            width: 300px;
+            height: 300px;
+            overflow: hidden;
+        }
+        #preview img {
+            width: 100%;
+            height: 100%;
+        }
+```
+
+```javascript
+
+function preview1(file) {
+            var img = new Image(), url = img.src = URL.createObjectURL(file)
+            var $img = $(img)
+            img.onload = function() {
+                URL.revokeObjectURL(url)
+                $('#preview').empty().append($img)
+            }
+        }
+        function preview2(file) {
+            var reader = new FileReader()
+            reader.onload = function(e) {
+                var $img = $('<img>').attr("src", e.target.result)
+                $('#preview').empty().append($img)
+            }
+            reader.readAsDataURL(file)
+        }
+         
+        $(function() {
+            $('[type=file]').change(function(e) {
+                var file = e.target.files[0]
+                preview1(file)
+            })
+        })
+```
+
+
+
 
