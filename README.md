@@ -61,7 +61,8 @@
     * [SQL Server 2008 R2]()
     * [Sublime Text 3]()
     * [WebStorm]()
-    * [Windows 7](https://github.com/ulfeng/Resources/blob/master/windows.md)
+    * [Windows 7]()
+    * [Git 命令](https://github.com/ulfeng/Git/blob/master/git%20%E5%91%BD%E4%BB%A4.md)
 
 --
 
