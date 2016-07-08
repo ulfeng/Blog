@@ -406,6 +406,35 @@ function preview1(file) {
         })
 ```
 
+17、获取当前日期的相邻日期
+```javascript
+function getDay(day){
+    var today = new Date();
+
+    var targetday_milliseconds=today.getTime() + 1000*60*60*24*day;
+
+    today.setTime(targetday_milliseconds); 
+
+    var tYear = today.getFullYear();
+    var tMonth = today.getMonth();
+    var tDate = today.getDate();
+    tMonth = doHandleMonth(tMonth + 1);
+    tDate = doHandleMonth(tDate);
+    return tYear+"-"+tMonth+"-"+tDate;
+}
+function doHandleMonth(month){
+    var m = month;
+    if(month.toString().length == 1){
+        m = "0" + month;
+    }
+    return m;
+}
+// test
+alert(getDay(1));
+    alert(getDay(2));
+    alert(getDay(3));
+```
+
 
 
 
