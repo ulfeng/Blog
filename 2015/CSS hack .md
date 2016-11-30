@@ -107,3 +107,41 @@ img {
     
 }
 ```
+
+##### 自定义滚动条
+```
+.left-box-scroll {
+    overflow-y: auto;
+}
+
+.left-box-scroll::-webkit-scrollbar {
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+.left-box-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.44, rgb(122, 153, 217)));
+}
+
+.left-box-scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #F5F5F5;
+    border-radius: 10px;
+}
+
+.left-box-scroll::-webkit-scrollbar-button {
+    display: none;
+}
+```
+
+##### 滚动条组成
+```
+::-webkit-scrollbar 滚动条整体部分
+::-webkit-scrollbar-thumb  滚动条里面的小方块，能向上向下移动（或往左往右移动，取决于是垂直滚动条还是水平滚动条）
+::-webkit-scrollbar-track  滚动条的轨道（里面装有Thumb）
+::-webkit-scrollbar-button 滚动条的轨道的两端按钮，允许通过点击微调小方块的位置。
+::-webkit-scrollbar-track-piece 内层轨道，滚动条中间部分（除去）
+::-webkit-scrollbar-corner 边角，即两个滚动条的交汇处
+::-webkit-resizer 两个滚动条的交汇处上用于通过拖动调整元素大小的小控件
+```
