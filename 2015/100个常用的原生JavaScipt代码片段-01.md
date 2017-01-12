@@ -471,6 +471,328 @@ function formatNum(str){
 
 ```
 
+#### js 常用扩展方法
+```
+if (!String.prototype.trim)
+  String.prototype.trim = function () {
+    return this.replace(/^\s*|\s*$/g, '');
+  }
+String.prototype.htmlEntities = function () {
+  return this.replace(/["'<>&]/gm, function (a) {
+    return {'"': '&quot;', '\'': '&apos;', '&': '&amp;', '<': '&lt;', '>': '&gt;'}[a];
+  });
+}
+String.prototype.quote = function () {
+  return this.replace(/([.?*+^$[\]\\(){}|-])/g, "\\$1");
+}
+String.prototype.toSBC = function (str) {
+  str = str || this;
+  var result = "";
+  var len = str.length;
+  for (var i = 0; i < len; i++) {
+    var cCode = str.charCodeAt(i);
+    cCode = (cCode >= 0xFF01 && cCode <= 0xFF5E) ? (cCode - 65248) : cCode;
+    cCode = (cCode == 0x03000) ? 0x0020 : cCode;
+    result += String.fromCharCode(cCode);
+  }
+  return result;
+}
+String.prototype.not = function (type) {
+  if (type != 'no-emoji') {
+    var a = this.not('no-emoji');
+    if (a)
+      return a;
+  }
+  switch (type) {
+    case 'no-emoji':
+      return (!/([\uE000-\uF8FF]|\uD83C[\uDF00-\uDFFF]|\uD83D[\uDC00-\uDDFF])/.test(this.trim())) ? false : "不能包含emoji图标";
+      break;
+    case 'docName':
+      return /^.{1,30}$/.test(this.trim()) ? false : "名称需介于1-30个字符";
+      break;
+    case 'nickname':
+      return /^[\u4e00-\u9fa5]{2,5}~{0,1}$/.test(this) ? false : "花名需介于2-5个字符";
+    case 'newNickname':
+      var v = this.not("nickname");
+      if (v)
+        return v;
+      if (/影数|小影剧本|风语翩|语翩翩|系统|平台|官方/.test(this)) {
+        try {
+          T.pub("tip")("不能包含专用词组");
+        } catch (e) {
+        }
+        return "不能包含专用词组";
+      }
 
+      break;
+    case 'email':
+      return /^[a-z0-9]([a-z0-9]*[-_.]?[a-z0-9]+)*@([a-z0-9]*[-_]?[a-z0-9]+)+[\.][a-z]{2,3}([\.][a-z]{2})?$/i.test(this) ? false : "邮箱地址格式错误";
+    case 'shotName':
+      return /^[\u4e00-\u9fa5]{2,10}$/.test(this) ? false : "镜头名称需2-10个汉字";
+    case 'paraContent':
+      return /\S/.test(this) ? false : "内容不能为空";
+    case 'mobileNO':
+      return /^1\d{10}$/.test(this) ? false : "手机号码格式错误";
+    case 'qq':
+      return /^\d{4,19}$/.test(this) ? false : "qq号码格式错误";
+    case 'password':
+      return /^\S{6,18}$/.test(this) ? false : "密码需6-18为非空字符";
+    case 'unitPrice':
+      var v = Number(this);
+      return (!isNaN(v) && v <= 10000 && v >= 1) ? false : "单价需介于1-10000元之间";
+      break;
+    case 'docPrice':
+      return /^[1-9][0-9]{0,5}$/.test(this) ? false : "剧本售价区间为1-999999元（整数）之间";
+    case 'realName':
+      return /^[\u4e00-\u9fa5]{2,20}$/.test(this) ? false : "请输入真实名字";
+    case 'IDCardNO':
+      return /^(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$/.test(this) ? false : "请输入18位身份证号码";
+    case 'zipCode':
+      return /^\d{6}$/.test(this) ? false : "邮政编码为6位数字";
+  }
+};
+String.prototype.toUserIcon = function () {
+  return this.toImageUrl('thumb', 'userIcon');
+}
+String.prototype.toImageUrl = function (type, useType) {
+  var imageName = this;
+  if (useType && useType == 'userIcon')
+    if (imageName == '' || imageName == 'defaultIcon')
+      return "/style/image/default.jpg";
+  var temp = imageName.split('_');
+  if (!type)
+    type = "normal";
+  temp = parseInt(temp[0], 36);
+  var url = document.location.protocol + "//image." + document.domain + "/" + parseInt(temp / 1000000) + "/" + parseInt((temp % 1000000) / 1000) + "/" + imageName + "/" + type + ".img";
+  return url;
+}
+String.prototype.toSeconds = function () {
+  var n = 0, temp = this.trim();
+  if (temp.indexOf("时") != -1) {
+    var x = temp.replace(/^(\d+).*$/, '$1');
+    n += Number(x) * 3600;
+    temp = temp.replace(/^.*时[^\d]*(.*)$/, "$1");
+  }
+  if (temp.indexOf("分") != -1) {
+    var x = temp.replace(/^(\d+).*$/, '$1');
+    n += Number(x) * 60;
+    temp = temp.replace(/^.*分[^\d]*(.*)$/, "$1");
+  }
+  if (temp.indexOf('秒') != -1) {
+    var x = temp.replace(/^(\d+).*$/, '$1');
+    n += Number(x);
+  }
+  return n;
+}
+String.prototype.limit = function () {
 
-
+}
+jQuery.fn.limit = function () {
+  var self = $('div[limit]');
+  self.each(function () {
+    var objString = $(this).text();
+    var objLength = $(this).text().length;
+    var num = $(this).attr('limit');
+    if (objLength > num) {
+      $(this).attr('title', objString);
+      objString = $(this).text(objString.substring(0, num) + '...');
+    }
+  })
+}
+Array.prototype.remove = function (e, isOne) {
+  var buffer = [];
+  for (var i = 0; i < this.length; i++) {
+    if (typeof e == 'function') {
+      if (e(this[i])) {
+        buffer.push(this[i]);
+        this.splice(i, 1);
+        i--;
+        if (isOne)
+          break;
+      }
+    } else {
+      if (this[i] == e) {
+        buffer.push(this[i]);
+        this.splice(i, 1);
+        i--;
+        if (isOne)
+          break;
+      }
+    }
+  }
+  if (buffer.length == 1)
+    return buffer[0];
+  else if (buffer.length == 0)
+    return null;
+  return buffer;
+}
+Array.prototype.find = function (callback) {
+  for (var i = 0; i < this.length; i++) {
+    if (callback(this[i], i))
+      return this[i];
+  }
+  return null;
+}
+Array.prototype.findIndex = function (callback) {
+  for (var i = 0; i < this.length; i++) {
+    if (callback(this[i], i))
+      return i;
+  }
+  return -1;
+}
+Date.prototype.add = function (part, value) {
+  value *= 1;
+  if (isNaN(value)) {
+    value = 0;
+  }
+  if (arguments.length == 0) {
+    part = 'd';
+    value = -1;
+  }
+  switch (part) {
+    case "y":
+      this.setUTCFullYear(this.getUTCFullYear() + value);
+      break;
+    case "m":
+      this.setUTCMonth(this.getUTCMonth() + value);
+      break;
+    case "d":
+      this.setUTCDate(this.getUTCDate() + value);
+      break;
+    case "h":
+      this.setUTCHours(this.getUTCHours() + value);
+      break;
+    case "n":
+      this.setUTCMinutes(this.getUTCMinutes() + value);
+      break;
+    case "s":
+      this.setUTCSeconds(this.getUTCSeconds() + value);
+      break;
+    default:
+  }
+  return this;
+}
+Date.prototype.format = function (fmt) { //author: meizz
+  var o = {
+    "M+": this.getMonth() + 1, //月份
+    "d+": this.getDate(), //日
+    "h+": this.getHours(), //小时
+    "m+": this.getMinutes(), //分
+    "s+": this.getSeconds(), //秒
+    "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+    "S": this.getMilliseconds() //毫秒
+  };
+  if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o)
+    if (new RegExp("(" + k + ")").test(fmt))
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+  return fmt;
+}
+Date.prototype.text = function (fmt) {
+  var a = this.getTime(), n = new Date().getTime();
+  var justnow = 60 * 1000,
+    fifty = 15 * 60 * 1000,
+    half = 2 * fifty,
+    hours = 2 * half,
+    days = 24 * hours,
+    week = 7 * days,
+    halfMon = 2 * week,
+    threeWeek = 3 * week,
+    month = 2 * halfMon,
+    twoMon = 2 * month,
+    threeMon = 3 * month,
+    time = 4 * month;
+  var t = n - a, str = "";
+  if (t > time) {
+    str = this.format(fmt ? fmt : "yy-MM-dd");
+  } else if (t > threeMon) {
+    str = "三个月前";
+  } else if (t > twoMon) {
+    str = "两个月前";
+  } else if (t > month) {
+    str = "一个月前";
+  } else if (t > threeWeek) {
+    str = "三周前";
+  } else if (t > halfMon) {
+    str = "半个月前";
+  } else if (t > week) {
+    str = "一周前";
+  } else if (t > days) {
+    str = parseInt(t / days) + "天前";
+  } else if (t > hours) {
+    str = parseInt(t / hours) + "小时前"
+  } else if (t > half) {
+    str = "半小时前";
+  } else if (t > fifty) {
+    str = "15分钟前";
+  } else if (t > justnow) {
+    str = parseInt(t / (60 * 1000)) + "分钟前";
+  } else {
+    var x = (n - this);
+    x = x < 0 ? 1 : x;
+    str = parseInt(x / 1000) + "秒前";
+  }
+  return str;
+}
+Date.prototype.brief = function () {
+  var a = new Date(this),
+    h = (a.getHours() < 10) ? ('0' + a.getHours()) : (a.getHours()),
+    m = (a.getMinutes() < 10) ? ('0' + a.getMinutes()) : (a.getMinutes());
+  return (a.getMonth() + 1) + '-' + a.getDate() + ' ' + h + ':' + m;
+}
+Number.prototype.amount = function () {
+  var a = this;
+  if (a > 9999) {
+    if (a < 100000) {
+      return (a / 10000).toFixed(2) + "万";
+    } else if (a > 99999 && a < 1000000) {
+      return parseInt(a / 10000) + "万";
+    } else
+      return (a / 1000000).toFixed(2) + "百万";
+  } else
+    return a;
+}
+Number.prototype.time = function (boolean, showAll) {
+  var num = parseInt(this),
+    min = 60,
+    hour = 60 * min;
+  if (boolean !== false) {
+    if (num < 0) {
+      return;
+    } else if (0 <= num && num < min) {
+      return num + '秒';
+    } else if (min <= num && num < hour) {
+      return '约' + parseInt(num / min) + '分';
+    } else if (num >= hour) {
+      return '约' + parseInt(num / hour) + '小时' + parseInt(num % hour / min) + '分';
+    }
+    // if(num<0){
+    // 	return;
+    // } else if(0<=num&&num<min){
+    // 	return num + '秒';
+    // } else if(min<=num&&num<hour){
+    // 	return parseInt(num/min) + '分' + parseInt(num%min) + '秒';
+    // } else if(num>=hour){
+    // 	return parseInt(num/hour) + '小时' + parseInt(num%hour/min) + '分' + parseInt(num%hour%min) + '秒';
+    // }
+  } else {
+    if (num < 0) {
+      return;
+    } else if (0 <= num && num < min) {
+      return '00:00:' + ((num < 10) ? '0' : '') + num;
+    } else if (min <= num && num < hour) {
+      var a = parseInt(num / min),
+        b = parseInt(num % min);
+      var str = '00:' + ((a < 10) ? '0' : '') + a + ':';
+      str += (parseInt(num % hour % min) < 10 ? '0' : '') + (num % hour % min);
+      //str+=(num<(5*min)||showAll)?(parseInt(num%hour%min)):"00";
+      return str;
+    } else if (num >= hour) {
+      var a = parseInt(num / hour),
+        b = parseInt(num % hour / min),
+        c = parseInt(num % hour % min);
+      return ((a < 10) ? '0' : '') + a + ':' + ((b < 10) ? '0' : '') + b + ':' + ((c < 10) ? '0' : '') + c;
+    }
+  }
+};
+```
