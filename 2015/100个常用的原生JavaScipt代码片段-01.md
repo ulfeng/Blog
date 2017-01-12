@@ -472,7 +472,7 @@ function formatNum(str){
 ```
 
 #### js 常用扩展方法
-```
+```javascript
 if (!String.prototype.trim)
   String.prototype.trim = function () {
     return this.replace(/^\s*|\s*$/g, '');
